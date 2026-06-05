@@ -1,0 +1,1276 @@
+{
+    "name": "Integration RSS, Anthropic Claude, JSON",
+    "flow": [
+        {
+            "id": 1,
+            "module": "rss:ActionReadArticles",
+            "version": 4,
+            "parameters": {
+                "include": []
+            },
+            "mapper": {
+                "url": "https://rss.app/feeds/8ZiBqakJogMbKi39.xml",
+                "gzip": true,
+                "password": "",
+                "username": "",
+                "maxResults": "2",
+                "filterDateTo": "",
+                "filterDateFrom": ""
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {},
+                "parameters": [
+                    {
+                        "name": "include",
+                        "type": "select",
+                        "label": "Process RSS fields",
+                        "multiple": true,
+                        "validate": {
+                            "enum": [
+                                "google-merchant-center",
+                                "itunes"
+                            ]
+                        }
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "url",
+                        "type": "url",
+                        "label": "URL",
+                        "required": true
+                    },
+                    {
+                        "name": "username",
+                        "type": "text",
+                        "label": "User name"
+                    },
+                    {
+                        "name": "password",
+                        "type": "text",
+                        "label": "Password"
+                    },
+                    {
+                        "name": "filterDateFrom",
+                        "type": "date",
+                        "label": "Date from"
+                    },
+                    {
+                        "name": "filterDateTo",
+                        "type": "date",
+                        "label": "Date to "
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of returned items",
+                        "required": true
+                    },
+                    {
+                        "name": "gzip",
+                        "type": "boolean",
+                        "label": "Request compressed content",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "name": "description",
+                        "type": "text",
+                        "label": "Description"
+                    },
+                    {
+                        "name": "summary",
+                        "type": "text",
+                        "label": "Summary"
+                    },
+                    {
+                        "name": "author",
+                        "type": "text",
+                        "label": "Author"
+                    },
+                    {
+                        "name": "url",
+                        "type": "url",
+                        "label": "URL"
+                    },
+                    {
+                        "name": "dateUpdated",
+                        "type": "date",
+                        "label": "Date updated"
+                    },
+                    {
+                        "name": "dateCreated",
+                        "type": "date",
+                        "label": "Date created"
+                    },
+                    {
+                        "name": "comments",
+                        "type": "url",
+                        "label": "Comments"
+                    },
+                    {
+                        "name": "image",
+                        "spec": [
+                            {
+                                "name": "title",
+                                "type": "text",
+                                "label": "Name"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Image"
+                    },
+                    {
+                        "name": "categories",
+                        "spec": {
+                            "type": "text"
+                        },
+                        "type": "array",
+                        "label": "Categories"
+                    },
+                    {
+                        "name": "source",
+                        "spec": [
+                            {
+                                "name": "title",
+                                "type": "text",
+                                "label": "Name"
+                            },
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Source"
+                    },
+                    {
+                        "name": "enclosures",
+                        "spec": [
+                            {
+                                "name": "url",
+                                "type": "url",
+                                "label": "URL"
+                            },
+                            {
+                                "name": "type",
+                                "type": "text",
+                                "label": "Type"
+                            },
+                            {
+                                "name": "length",
+                                "type": "number",
+                                "label": "Length"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Enclosures"
+                    },
+                    {
+                        "help": "Other RSS fields. All values are in text format.",
+                        "name": "rssFields",
+                        "spec": [
+                            {
+                                "name": "title",
+                                "type": "text",
+                                "label": "title"
+                            },
+                            {
+                                "name": "description",
+                                "type": "text",
+                                "label": "description"
+                            },
+                            {
+                                "name": "link",
+                                "type": "text",
+                                "label": "link"
+                            },
+                            {
+                                "name": "guid",
+                                "type": "text",
+                                "label": "guid"
+                            },
+                            {
+                                "name": "pubdate",
+                                "type": "text",
+                                "label": "pubdate"
+                            },
+                            {
+                                "name": "media:content",
+                                "spec": [
+                                    {
+                                        "name": "props",
+                                        "spec": [
+                                            {
+                                                "name": "medium",
+                                                "type": "text",
+                                                "label": "medium"
+                                            },
+                                            {
+                                                "name": "url",
+                                                "type": "text",
+                                                "label": "url"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Properties"
+                                    },
+                                    {
+                                        "name": "value",
+                                        "type": "text",
+                                        "label": "Value"
+                                    }
+                                ],
+                                "type": "collection",
+                                "label": "media:content"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "RSS fields"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "anthropic-claude:simpleTextPrompt",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "model": "claude-sonnet-4-6",
+                "max_tokens": "1000",
+                "textPrompt": "You are a strict AI News and Social Media Content Analysis Agent.\n\nFirst determine whether the provided content is a valid news article, blog post, press release, or social media post that contains meaningful information.\n\nContent: {{`1`}}\n\nBe strict. Never infer, assume, or fabricate information that is not explicitly present.\n\nA field is considered INVALID if it is missing, empty, null, \"unknown\", \"not provided\", \"not specified\", or cannot be confidently determined from the content.\n\nA post is considered relevant only if it contains meaningful information related to technology, AI, business, startups, products, innovation, cybersecurity, funding, policy, markets, or digital transformation.\n\nReturn RAW JSON only — no markdown, no code fences, no explanations.\n\n{\n\"is_content\": true,\n\"classification_confidence\": 0.97,\n\"valid\": true,\n\"content_type\": \"news_article\",\n\"title\": \"\",\n\"source\": \"\",\n\"author\": \"\",\n\"published_date\": \"\",\n\"url\": \"\",\n\"summary\": \"\",\n\"topics\": [],\n\"keywords\": [],\n\"sentiment\": \"positive\",\n\"sentiment_score\": 85,\n\"emotion\": \"optimistic\",\n\"relevance_score\": 92,\n\"engagement_potential\": \"high\",\n\"brand_mentions\": [],\n\"entities\": [],\n\"keep\": true,\n\"social_post\": \"\",\n\"image_prompt\": \"\",\n\"missing_fields\": [],\n\"reason\": \"short explanation of the decision\"\n}\n\nValidation Rules:\n\n* is_content = false if the input is spam, advertisement, incomplete text, navigation text, system message, code snippet, random characters, or unrelated content.\n* valid = true only if title, summary, sentiment, relevance_score, keep decision, and at least one topic are present and confidently identified.\n* sentiment must be one of:\n  positive, neutral, negative, mixed\n* engagement_potential must be one of:\n  low, medium, high\n* relevance_score must be between 0 and 100.\n* keep = true only if the content is useful, informative, and relevant for technology, AI, business, startup, product, cybersecurity, funding, policy, or market audiences.\n* social_post should be a concise LinkedIn/X-style post summarizing the content.\n* image_prompt should describe a professional social-media graphic representing the article.\n* missing_fields must contain all required fields that could not be extracted.\n* reason must briefly explain why the content was accepted or rejected.\n\nReturn JSON only.\n"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "model": {
+                            "label": "Claude Sonnet 4.6Frontier intelligence at scale-built for coding, agents, and enterprise workflows"
+                        }
+                    }
+                },
+                "expect": [
+                    {
+                        "name": "model",
+                        "type": "select",
+                        "label": "Model",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "claude-opus-4-8",
+                                "claude-opus-4-7",
+                                "claude-sonnet-4-6",
+                                "claude-opus-4-6",
+                                "claude-sonnet-4-5",
+                                "claude-haiku-4-5",
+                                "claude-opus-4-5"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "textPrompt",
+                        "type": "text",
+                        "label": "Text Prompt",
+                        "required": true
+                    },
+                    {
+                        "name": "max_tokens",
+                        "type": "uinteger",
+                        "label": "Max Tokens",
+                        "required": true
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": 3,
+            "module": "json:ParseJSON",
+            "version": 1,
+            "parameters": {
+                "type": 445043
+            },
+            "mapper": {
+                "json": "{{2.result}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "type": {
+                            "label": "My data structure 2"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "type",
+                        "type": "udt",
+                        "label": "Data structure"
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "json",
+                        "type": "text",
+                        "label": "JSON string",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "help": "",
+                        "name": "is_content",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "classification_confidence",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "valid",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "content_type",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "title",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "source",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "author",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "published_date",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "url",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "summary",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "topics",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "keywords",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "sentiment",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "sentiment_score",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "emotion",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "relevance_score",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "engagement_potential",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "brand_mentions",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "entities",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "keep",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "social_post",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "image_prompt",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "missing_fields",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    },
+                    {
+                        "help": "",
+                        "name": "reason",
+                        "type": "text",
+                        "label": null,
+                        "default": null,
+                        "required": false,
+                        "multiline": false
+                    }
+                ]
+            }
+        },
+        {
+            "id": 6,
+            "module": "google-sheets:addRow",
+            "version": 2,
+            "parameters": {
+                "__IMTCONN__": 7927758
+            },
+            "filter": {
+                "name": "filter",
+                "conditions": [
+                    [
+                        {
+                            "a": "{{3.keep}}",
+                            "b": "true",
+                            "o": "text:equal"
+                        },
+                        {
+                            "a": "{{3.relevance_score}}",
+                            "b": "0.6",
+                            "o": "number:greaterorequal"
+                        }
+                    ]
+                ]
+            },
+            "mapper": {
+                "mode": "fromAll",
+                "values": {
+                    "keep": "{{3.keep}}",
+                    "valid": "{{3.valid}}",
+                    "emotion": "{{3.emotion}}",
+                    "summary": "{{3.summary}}",
+                    "keywords": "{{3.keywords}}",
+                    "relevance": "{{3.relevance_score}}",
+                    "sentiment": "{{3.sentiment}}",
+                    "sentiment_score": "{{3.sentiment_score}}"
+                },
+                "sheetId": "Sheet1",
+                "spreadsheetId": "1EA3Z1fpE4pDKHJJttTtJNoGChWNmQmMcTUzOBMj4RVw",
+                "includesHeaders": true,
+                "insertDataOption": "INSERT_ROWS",
+                "useColumnHeaders": true,
+                "valueInputOption": "RAW",
+                "insertUnformatted": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "mode": {
+                            "label": "Select from all"
+                        },
+                        "sheetId": {
+                            "mode": "edit"
+                        },
+                        "includesHeaders": {
+                            "label": "Yes"
+                        },
+                        "insertDataOption": {
+                            "mode": "chose",
+                            "label": "Insert rows"
+                        },
+                        "useColumnHeaders": {
+                            "label": "Yes",
+                            "nested": [
+                                {
+                                    "name": "values",
+                                    "spec": [
+                                        {
+                                            "name": "keep",
+                                            "type": "text",
+                                            "label": "keep (A)"
+                                        },
+                                        {
+                                            "name": "relevance",
+                                            "type": "text",
+                                            "label": "relevance (B)"
+                                        },
+                                        {
+                                            "name": "valid",
+                                            "type": "text",
+                                            "label": "valid (C)"
+                                        },
+                                        {
+                                            "name": "sentiment",
+                                            "type": "text",
+                                            "label": "sentiment (D)"
+                                        },
+                                        {
+                                            "name": "sentiment_score",
+                                            "type": "text",
+                                            "label": "sentiment_score (E)"
+                                        },
+                                        {
+                                            "name": "emotion",
+                                            "type": "text",
+                                            "label": "emotion (F)"
+                                        },
+                                        {
+                                            "name": "keywords",
+                                            "type": "text",
+                                            "label": "keywords (G)"
+                                        },
+                                        {
+                                            "name": "summary",
+                                            "type": "text",
+                                            "label": "summary (H)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(I)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(J)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(K)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(L)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(M)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(N)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(O)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(P)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(Q)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(R)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(S)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(T)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(U)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(V)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(W)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(X)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(Y)"
+                                        },
+                                        {
+                                            "name": "undefined",
+                                            "type": "text",
+                                            "label": "(Z)"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "label": "Values in columns",
+                                    "metadata": [
+                                        [
+                                            [
+                                                "keep",
+                                                "relevance",
+                                                "valid",
+                                                "sentiment",
+                                                "sentiment_score",
+                                                "emotion",
+                                                "keywords",
+                                                "summary"
+                                            ]
+                                        ]
+                                    ]
+                                }
+                            ]
+                        },
+                        "valueInputOption": {
+                            "mode": "chose",
+                            "label": "Raw"
+                        },
+                        "insertUnformatted": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (rashika.mcs19.du@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "mode",
+                        "type": "select",
+                        "label": "Search Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "select",
+                                "fromAll",
+                                "map"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "insertUnformatted",
+                        "type": "boolean",
+                        "label": "Unformatted",
+                        "required": true
+                    },
+                    {
+                        "name": "valueInputOption",
+                        "type": "select",
+                        "label": "Value input option",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "USER_ENTERED",
+                                "RAW"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "insertDataOption",
+                        "type": "select",
+                        "label": "Insert data option",
+                        "validate": {
+                            "enum": [
+                                "INSERT_ROWS",
+                                "OVERWRITE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "spreadsheetId",
+                        "type": "text",
+                        "label": "Spreadsheet ID",
+                        "required": true
+                    },
+                    {
+                        "name": "sheetId",
+                        "type": "select",
+                        "label": "Sheet Name",
+                        "required": true
+                    },
+                    {
+                        "name": "includesHeaders",
+                        "type": "select",
+                        "label": "Table contains headers",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "useColumnHeaders",
+                        "type": "select",
+                        "label": "Use column headers as IDs of the columns",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "name": "values",
+                        "spec": [
+                            {
+                                "name": "keep",
+                                "type": "text",
+                                "label": "keep (A)"
+                            },
+                            {
+                                "name": "relevance",
+                                "type": "text",
+                                "label": "relevance (B)"
+                            },
+                            {
+                                "name": "valid",
+                                "type": "text",
+                                "label": "valid (C)"
+                            },
+                            {
+                                "name": "sentiment",
+                                "type": "text",
+                                "label": "sentiment (D)"
+                            },
+                            {
+                                "name": "sentiment_score",
+                                "type": "text",
+                                "label": "sentiment_score (E)"
+                            },
+                            {
+                                "name": "emotion",
+                                "type": "text",
+                                "label": "emotion (F)"
+                            },
+                            {
+                                "name": "keywords",
+                                "type": "text",
+                                "label": "keywords (G)"
+                            },
+                            {
+                                "name": "summary",
+                                "type": "text",
+                                "label": "summary (H)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(I)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(J)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(K)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(L)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(M)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(N)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(O)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(P)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(Q)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(R)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(S)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(T)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(U)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(V)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(W)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(X)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(Y)"
+                            },
+                            {
+                                "name": "undefined",
+                                "type": "text",
+                                "label": "(Z)"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Values in columns",
+                        "metadata": [
+                            [
+                                [
+                                    "keep",
+                                    "relevance",
+                                    "valid",
+                                    "sentiment",
+                                    "sentiment_score",
+                                    "emotion",
+                                    "keywords",
+                                    "summary"
+                                ]
+                            ]
+                        ]
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": 7,
+            "module": "datastore:AddRecord",
+            "version": 1,
+            "parameters": {
+                "datastore": 131676
+            },
+            "mapper": {
+                "key": "{{6.spreadsheetId}}",
+                "data": {
+                    "url": "{{3.url}}",
+                    "keep": "{{3.keep}}",
+                    "title": "{{3.title}}",
+                    "valid": "{{3.valid}}",
+                    "author": "{{3.author}}",
+                    "reason": "{{3.reason}}",
+                    "source": "{{3.source}}",
+                    "topics": "{{3.topics}}",
+                    "emotion": "{{3.emotion}}",
+                    "summary": "{{3.summary}}",
+                    "entities": "{{3.entities}}",
+                    "keywords": "{{3.keywords}}",
+                    "sentiment": "{{3.sentiment}}",
+                    "is_content": "{{3.is_content}}",
+                    "social_post": "{{3.social_post}}",
+                    "content_type": "{{3.content_type}}",
+                    "image_prompt": "{{3.image_prompt}}",
+                    "brand_mentions": "{{3.brand_mentions}}",
+                    "missing_fields": "{{3.missing_fields}}",
+                    "published_date": "{{3.published_date}}",
+                    "relevance_score": "{{3.relevance_score}}",
+                    "sentiment_score": "{{3.sentiment_score}}",
+                    "engagement_potential": "{{3.engagement_potential}}",
+                    "classification_confidence": "{{3.classification_confidence}}"
+                },
+                "overwrite": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1200,
+                    "y": 0,
+                    "messages": [
+                        {
+                            "category": "share",
+                            "severity": "warning",
+                            "message": "This module may contain parts which cannot be shared completely."
+                        }
+                    ]
+                },
+                "restore": {
+                    "expect": {
+                        "overwrite": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "datastore": {
+                            "label": "My data store"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "datastore",
+                        "type": "datastore",
+                        "label": "Data store",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "key",
+                        "type": "text",
+                        "label": "Key"
+                    },
+                    {
+                        "name": "overwrite",
+                        "type": "boolean",
+                        "label": "Overwrite an existing record",
+                        "required": true
+                    },
+                    {
+                        "name": "data",
+                        "spec": [
+                            {
+                                "name": "is_content",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "classification_confidence",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "valid",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "content_type",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "title",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "source",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "author",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "published_date",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "url",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "summary",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "topics",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "keywords",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "sentiment",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "sentiment_score",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "emotion",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "relevance_score",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "engagement_potential",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "brand_mentions",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "entities",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "keep",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "social_post",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "image_prompt",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "missing_fields",
+                                "type": "text",
+                                "label": null
+                            },
+                            {
+                                "name": "reason",
+                                "type": "text",
+                                "label": null
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Record"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.make.com",
+        "notes": []
+    }
+}
